@@ -17,7 +17,8 @@ if uri.startswith("postgres://"):
 # rest of connection code using the connection string `uri`
 
 #app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL', 'sqlite:///data.db') # 2 PARAMETERS, 1 the one to read 2 the default
-app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get(uri, 'sqlite:///data.db') # 2 PARAMETERS, 1 the one to read 2 the default
+#app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get(uri, 'sqlite:///data.db') # 2 PARAMETERS, 1 the one to read 2 the default
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URI', 'sqlite:///data.db') # 2 PARAMETERS, 1 the one to read 2 the default
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False #Turns off flask sql alchemy modification tracker, doesn't turn off sql alchemy modificaion tracker
 # #Only changing the extensions behaviour not the underlying sqlalchemy behaviour
 app.secret_key = 'jose'
