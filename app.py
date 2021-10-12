@@ -13,11 +13,6 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False #Turns off flask sql alchem
 app.secret_key = 'jose'
 api = Api(app)
 
-@app.before_first_request
-def create_tables():
-    db.create_all() # before first request runs it will run this and create data.db and create all the tables unless they exist already
-
-
 jwt= JWT(app, authenticate, identity) # /auth
 
 api.add_resource(Store, '/store/<string:name>')
