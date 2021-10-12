@@ -1,3 +1,4 @@
+import os
 from flask import Flask
 from flask_restful import Api
 from flask_jwt import JWT
@@ -7,7 +8,8 @@ from resources.item import Item, ItemList
 from resources.store import Store, StoreList
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///data.db'
+#app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///data.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL', 'sqlite:///data.db') # 2 PARAMETERS, 1 the one to read 2 the default
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False #Turns off flask sql alchemy modification tracker, doesn't turn off sql alchemy modificaion tracker
 # #Only changing the extensions behaviour not the underlying sqlalchemy behaviour
 app.secret_key = 'jose'
